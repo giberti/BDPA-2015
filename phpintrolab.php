@@ -1,8 +1,14 @@
 <?php
     // Total number of columns to display
     $columns = 15;
+    if (is_numeric($_GET['columns'])) {
+        $columns = $_GET['columns'];
+    }
     // Total number of rows to display
     $rows = 15;
+    if (is_numeric($_GET['rows'])) {
+        $rows = $_GET['rows'];
+    }
     // All prime numbers between 1-250
     $primeNumbers = array(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241);
 ?>
@@ -39,6 +45,11 @@
     </head>
     <body>
     <h1>Multiplication Table</h1>
+    <p>Make this table  
+        <a href="?columns=5&rows=5">5x5</a>
+        <a href="?columns=10&rows=10">10x10</a>
+        <a href="?columns=15&rows=15">15x15</a> or
+        <a href="?columns=20&rows=20">20x20</a></p>
     <?php
     // Setup the table
     print '<table>';
