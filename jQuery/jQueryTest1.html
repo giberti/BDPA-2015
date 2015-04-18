@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>My first jQuery Experiment</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>		 
+
+        <script>
+            $(document).ready(function(){
+                $('ul').bind('click', function(event) {
+                    var element = $(event.target);
+                    var text = element.text();
+                    element.text('You clicked ' + text);
+                });
+            });
+        </script>        
+
+        <script>
+            function onULClick(event) {
+                var element = $(event.target);
+                var text = element.text();
+                element.text('You clicked ' + text);
+            }
+            function onReady() {
+                $('ul').click(onULClick);
+            }
+            $(document).ready(onReady);
+        </script>
+
+    </head>
+    <body>
+        <p>Try clicking the values below</p>
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>Six</li>
+        </ul>
+    </body>
+</html>

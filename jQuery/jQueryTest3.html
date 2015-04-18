@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>My second jQuery Experiment</title>
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>		 
+        <script>
+        $(document).ready(function(){
+            $('#name').focus();
+
+            // Code for hard way button
+            $('#hardway').click(function(){
+                var name = document.getElementById('name').value;
+                var stateElement = document.getElementById('state');
+                var state = stateElement.options[stateElement.selectedIndex].value;
+                alert('Hello ' + name + ' from ' + state);
+            });
+
+            // Code for easy way button
+            $('#easyway').click(function(){
+                var name = $('#name').val();
+                var state = $('#state').val();
+                if (name.length === 0) {
+                    alert('Please enter your name.');
+                    return;
+                }
+                if (state.length === 0) {
+                    alert('Please select a state.');
+                    return;
+                }
+                alert('Hello ' + name + ' from ' + state);
+            });
+        });
+        </script>
+        <style>div { margin-bottom:15px; }</style>
+    </head>
+    <body>
+        <p>Try changing the values below and clicking the buttons</p>
+        <form onsubmit="return false;">
+        <div>
+            <p>What is your name?</p>
+            <input type="text" id="name" name="name" />
+        </div>
+        <div>
+            <p>Where are you?</p>
+            <select id="state" name="state">
+                <option value="">Choose a State</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Wisconsin">Wisconsin</option>
+            </select>
+        </div>
+        <div>
+            <button id="hardway">Hard Way</button> <button id="easyway">Easy Way</button> 
+        </div>
+        </form>
+    </body>
+</html>
