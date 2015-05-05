@@ -4,6 +4,21 @@
  * Uses the database connection to interact with the user
  */
 
+// grab all current users
+function getAllUsers($sortColumns = 'LastName', $rowoffset = 0, $pagesize = 9999) {
+    global $mysql;
+    $select = "SELECTT * FROM users ORDER BY {$sortColumns} LIMIT {$rowoffset},{$pagesize}";
+    $result = $mysql->query($select);
+    if ($result) {
+        $users = array();
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+        return $users;
+    }
+    return false;
+}
+
 // get user record by email and password
 function getUserByLogin($emailaddress, $password) {
     global $mysql;
@@ -120,6 +135,7 @@ function deleteUser($userid) {
     $delete = "DELETE FROM users WHERE UserID = " . $userid;
     $result = $mysql->query($delete);
     if ($result) {
+        deleteAllBicyclesForUserId($userid);
         return true;
     }
     return false;
