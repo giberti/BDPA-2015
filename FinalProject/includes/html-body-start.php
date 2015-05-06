@@ -22,9 +22,9 @@
                 $navItems = array(
                     'index.php' => 'Home',
                     'about.php' => 'About',
-                    'join.php'  => 'Join',
                 );
                 if (!loggedInUser()) {
+                    $navItems['join.php'] = 'Join';
                     $navItems['login.php'] = 'Login';
                 } else {
                     $navItems['logout.php'] = 'Logout';
