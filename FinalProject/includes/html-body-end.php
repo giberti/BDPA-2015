@@ -2,7 +2,7 @@
 <footer class="footer">
     <div class="container">
         <p class="text-muted">
-            &copy; <?php echo date('Y'); ?>BDPA SEMN Bicycle Club<br />
+            &copy; <?php echo date('Y'); ?> BDPA SEMN Bicycle Club<br />
             <a href="http://www.bdpa.org/" target="_blank">Learn more about BDPA and find a chapter near you</a>
         </p>
     </div>
