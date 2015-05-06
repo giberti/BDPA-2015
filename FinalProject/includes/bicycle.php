@@ -55,7 +55,7 @@ function addBicycle($userid, $manufacturer, $type, $speeds, $tiresizeinches, $im
     $insert = "INSERT INTO bicycles ({$columns}) VALUES ({$values})";
     $result = $mysql->query($insert);
     if ($result) {
-        return mysql_insert_id($result);
+        return mysqli_insert_id($mysql);
     }
     return false;
 }
