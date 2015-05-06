@@ -49,12 +49,16 @@ function addBicycle($userid, $manufacturer, $type, $speeds, $tiresizeinches, $im
             $values .= ', ';
         }
         $columns .= $column;
-        $values .= $values;
+        $values .= "'" . $value . "'";
     }
 
-    $insert = "INSERT INTO ({$columns}) VALUES ({$values})";
+    $insert = "INSERT INTO bicycles ({$columns}) VALUES ({$values})";
     $result = $mysql->query($insert);
+    print $insert;
+    die();
     if ($result) {
+        $bicycleid = mysql_insert_id($result);
+        die('BikeID ' . $bicycleid);
         return mysql_insert_id($result);
     }
     return false;
