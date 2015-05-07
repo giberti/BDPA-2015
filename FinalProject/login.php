@@ -47,11 +47,15 @@
                     }
                     ?>
 
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="text" name="emailaddress" id="inputEmail" class="form-control" placeholder="<?php echo $emailPlaceholder; ?>" value="<?php echo $emailValue; ?>" required autofocus>
+                    <div class="form-group">
+                        <label for="inputEmail">Email address</label>
+                        <input type="text" name="emailaddress" id="inputEmail" class="form-control" placeholder="<?php echo $emailPlaceholder; ?>" value="<?php echo $emailValue; ?>" required autofocus>
+                    </div>
 
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>

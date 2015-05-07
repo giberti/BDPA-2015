@@ -7,7 +7,7 @@ require 'includes/tip.php';
 
 include 'includes/html-body-start.php';
 
-$offset = (int) $_GET['offset'];
+$offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
 $tips = getRecentTips($offset, 100);
 
 ?>
