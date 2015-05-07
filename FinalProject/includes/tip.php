@@ -100,7 +100,7 @@ function updateTip($tipid, $userid, $type, $text) {
 
 function deleteTip($tipid) {
     global $mysql;
-    $delete = "DELETE FROM tips WHERE TipID = " . $tipid;
+    $delete = "DELETE FROM tips WHERE TipID = " . (int) $tipid;
     $result = $mysql->query($delete);
     if ($result) {
         return true;
