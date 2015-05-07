@@ -30,7 +30,7 @@ function getRoutesByUserID($userid) {
 
 function getUpcomingRoutes($rowoffset = 0, $pagesize = 9999) {
     global $mysql;
-    $select = "SELECT * FROM routes ORDER BY DateLastRidden ASC LIMIT {$rowoffset},{$pagesize}";
+    $select = "SELECT * FROM routes ORDER BY DateRidden ASC LIMIT {$rowoffset},{$pagesize}";
     $result = $mysql->query($select);
     if($result) {
         $rows = array();
@@ -42,10 +42,7 @@ function getUpcomingRoutes($rowoffset = 0, $pagesize = 9999) {
     return false;
 }
 
-// RouteName, Distance, Difficulty, Type, MapImage
-
-
-function addRoute($userid, $name, $description, $distance, $difficulty, $type, $mapimageurl, $dateridden = '0') {
+function addRoute($userid, $name, $description, $distance, $difficulty, $type, $mapimageurl) {
     global $mysql;
 
     $columns = '';
