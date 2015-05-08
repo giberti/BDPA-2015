@@ -15,7 +15,7 @@
     if (loggedInUser() && isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'edit':
-                $editTip = getTipById($_GET['tipid']);
+                $editTip = getTipById($_GET['TipID']);
                 break;
             case 'save':
                 if (!$_POST['TipID']) {
@@ -27,8 +27,8 @@
                 }
                 break;
             case 'delete':
-                if (isset($_GET['tipid']) && $_GET['tipid'] > 0) {
-                    deleteTip($_GET['tipid']);
+                if (isset($_GET['TipID']) && $_GET['TipID'] > 0) {
+                    deleteTip($_GET['TipID']);
                 }
                 break;
         }
@@ -98,10 +98,10 @@
 ?>
         <div class="col-xs-2">
             <div class="btn-group-xs">
-                <a href="<?php echo getFilename(); ?>?action=edit&tipid=<?php echo $tip['TipID']; ?>&offset=<?php echo $offset; ?>" class="btn btn-primary" aria-label="Left Align">
+                <a href="<?php echo getFilename(); ?>?action=edit&TipID=<?php echo $tip['TipID']; ?>&offset=<?php echo $offset; ?>" class="btn btn-primary" aria-label="Left Align">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </a>
-                <a href="<?php echo getFilename(); ?>?action=delete&tipid=<?php echo $tip['TipID']; ?>&offset=<?php echo $offset; ?>" class="btn btn-danger" aria-label="Left Align" onclick="return confirm('Are you sure you want to delete this tip?');">
+                <a href="<?php echo getFilename(); ?>?action=delete&TipID=<?php echo $tip['TipID']; ?>&offset=<?php echo $offset; ?>" class="btn btn-danger" aria-label="Left Align" onclick="return confirm('Are you sure you want to delete this tip?');">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </a>
             </div>
