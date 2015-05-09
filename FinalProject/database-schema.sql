@@ -98,7 +98,7 @@ CREATE TABLE `tips` (
   KEY `UserID` (`UserID`,`TipID`),
   KEY `DateAdded` (`DateAdded`),
   KEY `Type` (`Type`,`DateAdded`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `tips` (
 
 LOCK TABLES `tips` WRITE;
 /*!40000 ALTER TABLE `tips` DISABLE KEYS */;
-INSERT INTO `tips` VALUES (1,1,'Safety','Remember to always wear your helmet when riding!','2015-05-06 18:00:23'),(2,1,'Endurance','Bring a granola bar for rides over 1 hour','2015-05-06 18:00:23'),(3,1,'Safety','Wear reflective clothing and use a headlight and tail light when riding at night','2015-05-06 18:00:23'),(4,1,'Safety','Stay on the right side of the road','2015-05-06 18:00:23'),(5,1,'Safety','Check your tire pressures before every ride and set to the appropriate level before leaving.','2015-05-06 18:02:02'),(6,1,'Safety','Watch for drivers who may suddenly open their door when riding alongside parked cars. They might open doors when your least expect it.','2015-05-06 18:05:40');
+INSERT INTO `tips` VALUES (1,22,'Safety','Remember to always wear your helmet when riding!','2015-05-08 12:16:54'),(2,6,'Endurance','Bring a granola bar for rides over 1 hour','2015-05-08 15:19:17'),(3,9,'Safety','Wear reflective clothing and use a headlight and tail light when riding at night','2015-05-08 17:24:04'),(4,3,'Safety','Stay on the right side of the road','2015-05-08 02:24:55'),(5,7,'Safety','Check your tire pressures before every ride and set to the appropriate level before leaving.','2015-05-08 12:05:28'),(6,10,'Safety','Watch for drivers who may suddenly open their door when riding alongside parked cars. They might open doors when your least expect it.','2015-05-08 03:18:55'),(7,12,'Safety','Stay alert, keep an eye out for obstacles in your path.','2015-05-08 19:27:48'),(8,8,'Safety','Use hand signals to tell other cyclists and cars what your intentions are at intersections or when deviating from your current direction','2015-05-08 11:11:23'),(9,16,'Safey','Obey all traffic signals and signs. Bicycles have to follow the same rules of the road as cars!','2015-05-08 11:18:08'),(10,16,'Safey','Don\'t be distracted while riding. Cellphones and music can divert your attention and cause accidents.','2015-05-08 15:25:05'),(11,7,'Saftey','Plan your route in advance! Check out our routes if you need help','2015-05-08 20:09:43'),(12,8,'Safey','If riding alone, make sure someone knows where you are going and when you expect to be back','2015-05-08 13:39:35'),(13,18,'Equipment','A cyclo-computer is a great way to keep track of your distance and time riding as well as your current speed. ','2015-05-08 17:04:34'),(14,6,'Equipment','Saddle bags are great for keeping a spare tire tube and some basic tools. If it\'s big enough, you might be able to stick a snack in it too and leave the backpack at home!','2015-05-08 08:29:55'),(15,21,'Maintenance','Nylon tire levers are better than metal ones. Metal can damage the wheel more easily.','2015-05-08 23:44:31'),(16,6,'Maintenance','Always keep your tires properly inflated for easier riding and less wear on the tire','2015-05-08 22:55:27'),(17,7,'Maintenance','Clean and lube your chain once a month or after a particularly dirty ride. It will last longer and so will your shifters.','2015-05-08 05:35:28'),(18,4,'Equipment','A bike light is nice if you ride before sunrise and after sunset. In addition to seeing where you are going, it helps others see you! Don\'t forget to buy a rear light too!','2015-05-08 00:34:11'),(19,18,'Equipment','It may not seem necessary but a cycling jersey is nice. It has pockets on the back to hold snacks and things like cell phones where they won\'t obstruct your legs or fall out when riding','2015-05-08 17:55:49'),(20,7,'Equipment','Buy a water bottle if you plan to ride more than a couple of miles at a time. ','2015-05-08 13:24:22'),(21,10,'Equipment','Gloves can be nice if riding in cooler weather. Most cycling gloves also have padding in the palm and wrist which reduces fatigue from riding.','2015-05-08 11:57:12');
 /*!40000 ALTER TABLE `tips` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-08 23:20:37
+-- Dump completed on 2015-05-08 23:44:07
