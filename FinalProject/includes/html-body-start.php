@@ -21,6 +21,8 @@
                 // Create the navigation items from an array
                 $navItems = array(
                     'index.php' => 'Home',
+                    'routes.php' => 'Routes',
+                    'tips.php' => 'Tips',
                     'about.php' => 'About',
                 );
                 if (!loggedInUser()) {
