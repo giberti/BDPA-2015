@@ -34,8 +34,18 @@ CREATE TABLE `bicycles` (
   KEY `UserIDType` (`UserID`,`Type`),
   KEY `Type` (`Type`,`BicycleID`),
   KEY `ManufacturerType` (`Manufacturer`,`Type`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bicycles`
+--
+
+LOCK TABLES `bicycles` WRITE;
+/*!40000 ALTER TABLE `bicycles` DISABLE KEYS */;
+INSERT INTO `bicycles` VALUES (1,1,'Trek','Mountain Bike',12,29,'');
+/*!40000 ALTER TABLE `bicycles` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `routes`
@@ -58,8 +68,18 @@ CREATE TABLE `routes` (
   PRIMARY KEY (`RouteID`),
   KEY `RouteRideOrder` (`DateRidden`,`DateAdded`,`RouteID`),
   KEY `TypeName` (`Type`,`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `routes`
+--
+
+LOCK TABLES `routes` WRITE;
+/*!40000 ALTER TABLE `routes` DISABLE KEYS */;
+INSERT INTO `routes` VALUES (1,1,'Douglas Trail','This trail stretches from Olmsted County to Goodhue. It\'s a paved trail that works it\'s way through woodlands and fields along an old railroad bed. It\'s a mostly flat trail.',12.5,'Easy','Paved Trail','images/routes/douglas-trail.png','0000-00-00 00:00:00','2015-05-08 21:51:12'),(2,1,'Cascade Lake Trail','A beautiful paved trail winding through Cascade lakes and wildflower prairie. Provides easy access to Cascade river trail and downtown as well as northwest rochester via the newly constructed pedestrian and bicycle bridge over Highway-14. Can be combined with the West Circle Drive and the US-52 to make a nice loop.',2.5,'Easy','Paved Trail','images/routes/cascade-lake.png','0000-00-00 00:00:00','2015-05-08 22:27:45');
+/*!40000 ALTER TABLE `routes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tips`
@@ -78,8 +98,18 @@ CREATE TABLE `tips` (
   KEY `UserID` (`UserID`,`TipID`),
   KEY `DateAdded` (`DateAdded`),
   KEY `Type` (`Type`,`DateAdded`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tips`
+--
+
+LOCK TABLES `tips` WRITE;
+/*!40000 ALTER TABLE `tips` DISABLE KEYS */;
+INSERT INTO `tips` VALUES (1,1,'Safety','Remember to always wear your helmet when riding!','2015-05-06 18:00:23'),(2,1,'Endurance','Bring a granola bar for rides over 1 hour','2015-05-06 18:00:23'),(3,1,'Safety','Wear reflective clothing and use a headlight and tail light when riding at night','2015-05-06 18:00:23'),(4,1,'Safety','Stay on the right side of the road','2015-05-06 18:00:23'),(5,1,'Safety','Check your tire pressures before every ride and set to the appropriate level before leaving.','2015-05-06 18:02:02'),(6,1,'Safety','Watch for drivers who may suddenly open their door when riding alongside parked cars. They might open doors when your least expect it.','2015-05-06 18:05:40');
+/*!40000 ALTER TABLE `tips` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -105,8 +135,18 @@ CREATE TABLE `users` (
   PRIMARY KEY (`UserID`),
   KEY `LastFirstNames` (`LastName`,`FirstName`),
   KEY `EmailAddress` (`EmailAddress`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Erik','Giberti','erik@bdpastudents.com',23,'5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8','2558 Hwy 10 NE','Mounds View','MN','55112','123-456-67','','2015-05-05 21:15:13');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -117,4 +157,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-06 19:48:24
+-- Dump completed on 2015-05-08 22:35:15
