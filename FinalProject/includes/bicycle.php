@@ -8,10 +8,10 @@
 function getBicyclesForUserID($userid) {
     global $mysql;
     $select = "SELECT * FROM bicycles WHERE UserID = " . $userid;
-    $bikes = $mysql->query($select);
-    if ($bikes) {
+    $result = mysql_query($select, $mysql);
+    if ($result) {
         $bicycles = array();
-        while ($row = $bikes->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $bicycles[] = $row;
         }
         return $bicycles;
@@ -23,9 +23,9 @@ function getBicyclesForUserID($userid) {
 function getBicycleByID($bicycleid) {
     global $mysql;
     $select = "SELECT * FROM bicycles WHERE BicycleID = " . $bicycleid;
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
-        return $result->fetch_assoc();
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
@@ -53,9 +53,9 @@ function addBicycle($userid, $manufacturer, $type, $speeds, $tiresizeinches, $im
     }
 
     $insert = "INSERT INTO bicycles ({$columns}) VALUES ({$values})";
-    $result = $mysql->query($insert);
+    $result = mysql_query($insert, $mysql);
     if ($result) {
-        return mysqli_insert_id($mysql);
+        return mysql_insert_id($mysql);
     }
     return false;
 }
@@ -79,7 +79,7 @@ function updateBicycle($bicycleid, $userid, $manufacturer, $type, $speeds, $tire
         $updates .= "{$column} = '{$value}'";
     }
     $update = "UPDATE bicycles SET {$updates} WHERE bicycleid = {$bicycleid}";
-    $result = $mysql->query($update);
+    $result = mysql_query($update, $mysql);
     if ($result) {
         return getBicycleByID($bicycleid);
     }
@@ -90,7 +90,7 @@ function updateBicycle($bicycleid, $userid, $manufacturer, $type, $speeds, $tire
 function deleteAllBicyclesForUserId($userid) {
     global $mysql;
     $delete = "DELETE FROM bicycles WHERE userid = " . $userid;
-    $result = $mysql->query($delete);
+    $result = mysql_query($delete, $mysql);
     if ($result) {
         return true;
     }

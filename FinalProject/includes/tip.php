@@ -7,9 +7,9 @@
 function getTipById($tipid) {
     global $mysql;
     $select = "SELECT * FROM tips WHERE TipID = " . $tipid;
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
-        return $result->fetch_assoc();
+        return mysql_fetcha_assoc($result);
     }
     return false;
 }
@@ -17,10 +17,10 @@ function getTipById($tipid) {
 function getTipsByUser($userid) {
     global $mysql;
     $select = "SELECT * FROM tips WHERE UserID = " . $userid;
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
         $rows = array();
-        while ($row = $result->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $rows[] = $row;
         }
         return $rows;
@@ -31,10 +31,10 @@ function getTipsByUser($userid) {
 function getRecentTips($rowoffset = 0, $pagesize = 9999) {
     global $mysql;
     $select = "SELECT * FROM tips ORDER BY DateAdded DESC LIMIT {$rowoffset},{$pagesize}";
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
         $rows = array();
-        while($row = $result->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $rows[] = $row;
         }
         return $rows;
@@ -63,9 +63,9 @@ function addTip($userid, $type, $text) {
     }
 
     $insert = "INSERT INTO tips ({$columns}) VALUES ($values)";
-    $result = $mysql->query($insert);
+    $result = mysql_query($insert, $mysql);
     if ($result) {
-        $tipid = mysqli_insert_id($mysql);
+        $tipid = mysql_insert_id($mysql);
         return getTipById($tipid);
     }
     return false;
@@ -91,7 +91,7 @@ function updateTip($tipid, $userid, $type, $text) {
         $updates .= $column . " = '" . $value . "'";
     }
     $update = "UPDATE tips SET {$updates} WHERE TipID = " . $tipid;
-    $result = $mysql->query($update);
+    $result = mysql_query($update, $mysql);
     if ($result) {
         return getTipById($tipid);
     }
@@ -101,7 +101,7 @@ function updateTip($tipid, $userid, $type, $text) {
 function deleteTip($tipid) {
     global $mysql;
     $delete = "DELETE FROM tips WHERE TipID = " . (int) $tipid;
-    $result = $mysql->query($delete);
+    $result = mysql_query($delete, $mysql);
     if ($result) {
         return true;
     }

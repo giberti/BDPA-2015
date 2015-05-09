@@ -8,10 +8,10 @@
 function getAllUsers($sortColumns = 'LastName', $rowoffset = 0, $pagesize = 9999) {
     global $mysql;
     $select = "SELECTT * FROM users ORDER BY {$sortColumns} LIMIT {$rowoffset},{$pagesize}";
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
         $users = array();
-        while ($row = $result->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $users[] = $row;
         }
         return $users;
@@ -24,9 +24,9 @@ function getUserByLogin($emailaddress, $password) {
     global $mysql;
     $passwordHash = sha1($password);
     $select = "SELECT * FROM users WHERE EmailAddress = '" . addslashes($emailaddress) . "' AND PasswordHash = '" . addslashes($passwordHash) . "'";
-    $rows = $mysql->query($select);
-    if ($rows->num_rows == 1) {
-        return $rows->fetch_assoc();
+    $result = mysql_query($select, $mysql);
+    if (mysql_num_rows($result) == 1) {
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
@@ -35,9 +35,9 @@ function getUserByLogin($emailaddress, $password) {
 function getUserById($userId) {
     global $mysql;
     $select = "SELECT * FROM users WHERE UserID = " . $userId;
-    $rows = $mysql->query($select);
-    if ($rows->num_rows == 1) {
-        return $rows->fetch_assoc();
+    $result = mysql_query($select, $mysql);
+    if (mysql_num_rows($result) == 1) {
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
@@ -46,9 +46,9 @@ function getUserById($userId) {
 function getUserByEmail($emailaddress) {
     global $mysql;
     $select = "SELECT * FROM users WHERE EmailAddress = '" . addslashes($emailaddress) . "'";
-    $rows = $mysql->query($select);
-    if ($rows->num_rows == 1) {
-        return $rows->fetch_assoc();
+    $result = mysql_query($select, $mysql);
+    if (mysql_num_rows($result) == 1) {
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
@@ -86,7 +86,7 @@ function addUser($emailaddress, $password, $firstname, $lastname, $age, $address
         $values .= "'" . $value . "'";
     }
     $insert = "INSERT INTO users ({$columns}) VALUES ({$values})";
-    $result = $mysql->query($insert);
+    $result = mysql_query($insert, $mysql);
     if ($result) {
         return getUserByLogin($emailaddress, $password);
     }
@@ -122,7 +122,7 @@ function updateUser($userid, $emailaddress, $password, $firstname, $lastname, $a
         $updates .= $column . " = '" . $value . "'";
     }
     $update = "UPDATE users SET {$updates} WHERE UserID = " . $userid;
-    $result = $mysql->query($update);
+    $result = mysql_query($update, $mysql);
     if ($result) {
         return getUserById($userid);
     }
@@ -133,7 +133,7 @@ function updateUser($userid, $emailaddress, $password, $firstname, $lastname, $a
 function deleteUser($userid) {
     global $mysql;
     $delete = "DELETE FROM users WHERE UserID = " . $userid;
-    $result = $mysql->query($delete);
+    $result = mysql_query($delete, $mysql);
     if ($result) {
         deleteAllBicyclesForUserId($userid);
         return true;

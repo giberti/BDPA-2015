@@ -7,9 +7,9 @@
 function getRouteById($routeid) {
     global $mysql;
     $select = "SELECT * FROM routes WHERE RouteID = " . $routeid;
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
-        return $result->fetch_assoc();
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
@@ -17,10 +17,10 @@ function getRouteById($routeid) {
 function getRoutesByUserID($userid) {
     global $mysql;
     $select = "SELECT * FROM routes WHERE UserID = " . $userid;
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if ($result) {
         $rows = array();
-        while ($row = $result->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $rows[] = $row;
         }
         return $rows;
@@ -31,10 +31,10 @@ function getRoutesByUserID($userid) {
 function getUpcomingRoutes($rowoffset = 0, $pagesize = 9999) {
     global $mysql;
     $select = "SELECT * FROM routes ORDER BY DateRidden ASC LIMIT {$rowoffset},{$pagesize}";
-    $result = $mysql->query($select);
+    $result = mysql_query($select, $mysql);
     if($result) {
         $rows = array();
-        while ($row = $result->fetch_assoc()) {
+        while (($row = mysql_fetch_assoc($result))) {
             $rows[] = $row;
         }
         return $rows;
@@ -68,9 +68,9 @@ function addRoute($userid, $name, $description, $distance, $difficulty, $type, $
     }
 
     $insert = "INSERT INTO routes ({$columns}) VALUES ($values)";
-    $result = $mysql->query($insert);
+    $result = mysql_query($insert, $mysql);
     if ($result) {
-        $tipid = mysqli_insert_id($mysql);
+        $tipid = mysql_insert_id($mysql);
         return getRouteById($tipid);
     }
     return false;
@@ -101,7 +101,7 @@ function updateRoute($routeid, $userid, $name, $description, $distance, $difficu
         $updates .= $column . " = '" . $value . "'";
     }
     $update = "UPDATE routes SET {$updates} WHERE TipID = " . $routeid;
-    $result = $mysql->query($update);
+    $result = mysql_query($update, $mysql);
     if ($result) {
         return getRouteById($routeid);
     }
@@ -111,7 +111,7 @@ function updateRoute($routeid, $userid, $name, $description, $distance, $difficu
 function deleteRoute($routeid) {
     global $mysql;
     $delete = "DELETE FROM routes WHERE RouteID = " . $routeid;
-    $result = $mysql->query($delete);
+    $result = mysql_query($delete, $mysql);
     if ($result) {
         return true;
     }
