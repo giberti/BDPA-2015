@@ -34,7 +34,7 @@ CREATE TABLE `bicycles` (
   KEY `UserIDType` (`UserID`,`Type`),
   KEY `Type` (`Type`,`BicycleID`),
   KEY `ManufacturerType` (`Manufacturer`,`Type`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `bicycles` (
 
 LOCK TABLES `bicycles` WRITE;
 /*!40000 ALTER TABLE `bicycles` DISABLE KEYS */;
-INSERT INTO `bicycles` VALUES (1,1,'Trek','Mountain Bike',12,29,'');
+INSERT INTO `bicycles` VALUES (1,1,'Giant','Road',12,27,''),(2,2,'Mongoose','Mountain',18,26,''),(3,3,'Huffy','Fixie',1,27,''),(4,4,'Specialized','Fixie',1,26,''),(5,5,'Mongoose','Mountain',24,26,''),(6,6,'Bianchi','BMX',1,20,''),(7,7,'Huffy','Cyclocross',12,27,''),(8,8,'Surly','Mountain',12,27,''),(9,9,'Mongoose','Cyclocross',12,27,''),(10,10,'Surly','Fixie',1,26,''),(11,11,'Bianchi','Cruiser',16,27,''),(12,12,'Trek','Mountain',18,27,''),(13,13,'Huffy','Fixie',1,26,''),(14,14,'Huffy','Mountain',10,26,''),(15,15,'Surly','Cruiser',16,27,''),(16,16,'Giant','Road',16,27,''),(17,17,'Mongoose','Cruiser',12,27,''),(18,18,'Surly','Fixie',1,26,''),(19,19,'Surly','BMX',1,20,''),(20,20,'Huffy','Fixie',1,26,''),(21,21,'Mongoose','Mountain',16,27,''),(22,22,'Trek','Fixie',1,26,''),(23,11,'Specialized','Road',24,27,''),(24,14,'Specialized','Cruiser',10,27,''),(25,16,'Specialized','Road',12,26,''),(26,5,'Specialized','BMX',1,20,''),(27,16,'Trek','BMX',1,20,''),(28,1,'Specialized','Cyclocross',10,27,''),(29,9,'Mongoose','Fixie',1,27,''),(30,10,'Mongoose','Cruiser',18,26,''),(31,22,'Giant','Fixie',1,27,''),(32,5,'Trek','Road',10,27,''),(33,21,'Trek','Fixie',1,26,''),(34,14,'Bianchi','Fixie',1,26,''),(35,4,'Mongoose','Cyclocross',16,27,''),(36,4,'Surly','Road',12,27,''),(37,9,'Specialized','Road',10,26,''),(38,7,'Giant','BMX',1,20,''),(39,19,'Specialized','Cruiser',18,26,''),(40,14,'Surly','Mountain',12,26,''),(41,19,'Huffy','Cruiser',18,27,''),(42,15,'Huffy','Cruiser',12,26,''),(43,22,'Mongoose','Cyclocross',18,26,''),(44,20,'Huffy','Cruiser',24,26,''),(45,21,'Mongoose','Fixie',1,27,'');
 /*!40000 ALTER TABLE `bicycles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-08 23:02:47
+-- Dump completed on 2015-05-08 23:20:37
