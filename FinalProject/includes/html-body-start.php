@@ -29,6 +29,7 @@
                     $navItems['join.php'] = 'Join';
                     $navItems['login.php'] = 'Login';
                 } else {
+                    $navItems['users.php'] = 'Users';
                     $navItems['logout.php'] = 'Logout';
                 }
                 foreach ($navItems as $filename => $label) {

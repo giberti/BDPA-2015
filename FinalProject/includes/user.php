@@ -7,7 +7,7 @@
 // grab all current users
 function getAllUsers($sortColumns = 'LastName', $rowoffset = 0, $pagesize = 9999) {
     global $mysql;
-    $select = "SELECTT * FROM users ORDER BY {$sortColumns} LIMIT {$rowoffset},{$pagesize}";
+    $select = "SELECT * FROM users ORDER BY {$sortColumns} LIMIT {$rowoffset},{$pagesize}";
     $result = mysql_query($select, $mysql);
     if ($result) {
         $users = array();
