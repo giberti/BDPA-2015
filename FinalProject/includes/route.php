@@ -49,12 +49,12 @@ function addRoute($userid, $name, $description, $distance, $difficulty, $type, $
     $values = '';
     $data = array(
         'UserID' => (int) $userid,
-        'Name' => addslashes($name),
-        'Description' => addslashes($description),
-        'Distance' => addslashes($distance),
-        'Difficulty' => addslashes($difficulty),
-        'Type' => addslashes($type),
-        'MapImageURL' => addslashes($mapimageurl),
+        'Name' => mysql_real_escape_string($name, $mysql),
+        'Description' => mysql_real_escape_string($description, $mysql),
+        'Distance' => mysql_real_escape_string($distance, $mysql),
+        'Difficulty' => mysql_real_escape_string($difficulty, $mysql),
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'MapImageURL' => mysql_real_escape_string($mapimageurl, $mysql),
         'DateRidden' => '0000-00-00 00:00:00',
         'DateAdded' => date('Y-m-d H:i:s'),
     );
@@ -85,12 +85,12 @@ function updateRoute($routeid, $userid, $name, $description, $distance, $difficu
 
     $data = array(
         'UserID' => (int) $userid,
-        'Name' => addslashes($name),
-        'Description' => addslashes($description),
-        'Distance' => addslashes($distance),
-        'Difficulty' => addslashes($difficulty),
-        'Type' => addslashes($type),
-        'MapImageURL' => addslashes($mapimageurl),
+        'Name' => mysql_real_escape_string($name, $mysql),
+        'Description' => mysql_real_escape_string($description, $mysql),
+        'Distance' => mysql_real_escape_string($distance, $mysql),
+        'Difficulty' => mysql_real_escape_string($difficulty, $mysql),
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'MapImageURL' => mysql_real_escape_string($mapimageurl, $mysql),
         'DateRidden' => date('Y-m-d H:i:s', strtotime($dateridden)),
     );
     $updates = '';

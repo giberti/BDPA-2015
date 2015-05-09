@@ -23,7 +23,7 @@ function getAllUsers($sortColumns = 'LastName', $rowoffset = 0, $pagesize = 9999
 function getUserByLogin($emailaddress, $password) {
     global $mysql;
     $passwordHash = sha1($password);
-    $select = "SELECT * FROM users WHERE EmailAddress = '" . addslashes($emailaddress) . "' AND PasswordHash = '" . addslashes($passwordHash) . "'";
+    $select = "SELECT * FROM users WHERE EmailAddress = '" . mysql_real_escape_string($emailaddress, $mysql) . "' AND PasswordHash = '" . mysql_real_escape_string($passwordHash, $mysql) . "'";
     $result = mysql_query($select, $mysql);
     if (mysql_num_rows($result) == 1) {
         return mysql_fetch_assoc($result);
@@ -45,7 +45,7 @@ function getUserById($userId) {
 // get user record by email address - also can be used to see if user exists
 function getUserByEmail($emailaddress) {
     global $mysql;
-    $select = "SELECT * FROM users WHERE EmailAddress = '" . addslashes($emailaddress) . "'";
+    $select = "SELECT * FROM users WHERE EmailAddress = '" . mysql_real_escape_string($emailaddress, $mysql) . "'";
     $result = mysql_query($select, $mysql);
     if (mysql_num_rows($result) == 1) {
         return mysql_fetch_assoc($result);
@@ -64,17 +64,17 @@ function addUser($emailaddress, $password, $firstname, $lastname, $age, $address
     $columns = '';
     $values = '';
     $data = array(
-        'EmailAddress' => addslashes($emailaddress),
-        'PasswordHash' => addslashes(sha1($password)),
-        'FirstName' => addslashes($firstname),
-        'LastName' => addslashes($lastname),
+        'EmailAddress' => mysql_real_escape_string($emailaddress, $mysql),
+        'PasswordHash' => mysql_real_escape_string(sha1($password), $mysql),
+        'FirstName' => mysql_real_escape_string($firstname, $mysql),
+        'LastName' => mysql_real_escape_string($lastname, $mysql),
         'Age' => (int) $age,
-        'Address' => addslashes($address),
-        'City' => addslashes($city),
-        'State' => addslashes($state),
-        'ZipCode' => addslashes($zipcode),
-        'PhoneNumber' => addslashes($phonenumber),
-        'PhotoUrl' => addslashes($photourl),
+        'Address' => mysql_real_escape_string($address, $mysql),
+        'City' => mysql_real_escape_string($city, $mysql),
+        'State' => mysql_real_escape_string($state, $mysql),
+        'ZipCode' => mysql_real_escape_string($zipcode, $mysql),
+        'PhoneNumber' => mysql_real_escape_string($phonenumber, $mysql),
+        'PhotoUrl' => mysql_real_escape_string($photourl, $mysql),
         'DateAdded' => date('Y-m-d H:i:s')
     );
     foreach ($data as $column => $value) {
@@ -102,17 +102,17 @@ function updateUser($userid, $emailaddress, $password, $firstname, $lastname, $a
 
     global $mysql;
     $data = array(
-        'EmailAddress' => addslashes($emailaddress),
-        'PasswordHash' => addslashes(sha1($password)),
-        'FirstName' => addslashes($firstname),
-        'LastName' => addslashes($lastname),
+        'EmailAddress' => mysql_real_escape_string($emailaddress, $mysql),
+        'PasswordHash' => mysql_real_escape_string(sha1($password), $mysql),
+        'FirstName' => mysql_real_escape_string($firstname, $mysql),
+        'LastName' => mysql_real_escape_string($lastname, $mysql),
         'Age' => (int) $age,
-        'Address' => addslashes($address),
-        'City' => addslashes($city),
-        'State' => addslashes($state),
-        'ZipCode' => addslashes($zipcode),
-        'PhoneNumber' => addslashes($phonenumber),
-        'PhotoUrl' => addslashes($photourl)
+        'Address' => mysql_real_escape_string($address, $mysql),
+        'City' => mysql_real_escape_string($city, $mysql),
+        'State' => mysql_real_escape_string($state, $mysql),
+        'ZipCode' => mysql_real_escape_string($zipcode, $mysql),
+        'PhoneNumber' => mysql_real_escape_string($phonenumber, $mysql),
+        'PhotoUrl' => mysql_real_escape_string($photourl, $mysql)
     );
     $updates = '';
     foreach ($data as $column => $value) {

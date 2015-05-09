@@ -49,8 +49,8 @@ function addTip($userid, $type, $text) {
     $values = '';
     $data = array(
         'UserID' => (int) $userid,
-        'Type' => addslashes($type),
-        'Text' => addslashes($text),
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'Text' => mysql_real_escape_string($text, $mysql),
         'DateAdded' => date('Y-m-d H:i:s')
     );
     foreach ($data as $column => $value) {
@@ -80,8 +80,8 @@ function updateTip($tipid, $userid, $type, $text) {
 
     $data = array(
         'UserID' => (int) $userid,
-        'Type' => addslashes($type),
-        'Text' => addslashes($text)
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'Text' => mysql_real_escape_string($text, $mysql)
     );
     $updates = '';
     foreach ($data as $column => $value) {

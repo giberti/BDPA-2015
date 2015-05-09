@@ -35,11 +35,11 @@ function addBicycle($userid, $manufacturer, $type, $speeds, $tiresizeinches, $im
     global $mysql;
     $data = array(
         'UserID' => (int) $userid,
-        'Manufacturer' => addslashes($manufacturer),
-        'Type' => addslashes($type),
-        'Speeds' => addslashes($speeds),
-        'TireSizeInches' => addslashes($tiresizeinches),
-        'ImageUrl' => addslashes($imageurl)
+        'Manufacturer' => mysql_real_escape_string($manufacturer, $mysql),
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'Speeds' => mysql_real_escape_string($speeds, $mysql),
+        'TireSizeInches' => mysql_real_escape_string($tiresizeinches, $mysql),
+        'ImageUrl' => mysql_real_escape_string($imageurl, $mysql)
     );
     $columns = '';
     $values = '';
@@ -65,11 +65,11 @@ function updateBicycle($bicycleid, $userid, $manufacturer, $type, $speeds, $tire
     global $mysql;
     $data = array(
         'UserID' => (int) $userid,
-        'Manufacturer' => addslashes($manufacturer),
-        'Type' => addslashes($type),
-        'Speeds' => addslashes($speeds),
-        'TireSizeInches' => addslashes($tiresizeinches),
-        'ImageUrl' => addslashes($imageurl)
+        'Manufacturer' => mysql_real_escape_string($manufacturer, $mysql),
+        'Type' => mysql_real_escape_string($type, $mysql),
+        'Speeds' => mysql_real_escape_string($speeds, $mysql),
+        'TireSizeInches' => mysql_real_escape_string($tiresizeinches, $mysql),
+        'ImageUrl' => mysql_real_escape_string($imageurl, $mysql)
     );
     $updates = '';
     foreach($data as $column => $value) {
