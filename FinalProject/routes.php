@@ -20,10 +20,10 @@ if (loggedInUser() && isset($_GET['action'])) {
         case 'save':
             if (!$_POST['RouteID']) {
                 // new route
-                addRoute(getUserID(), $_POST['Name'], $_POST['Description'], $_POST['Distance'], $_POST['Difficulty'], $_POST['Type'], $_POST['MapImageUrl']);
+                addRoute(getUserID(), $_POST['Name'], $_POST['Description'], $_POST['Distance'], $_POST['Difficulty'], $_POST['Type'], $_POST['MapImageURL']);
             } else {
                 // editing an existing route
-                updateRoute($_POST['RouteID'], getUserID(), $_POST['Name'], $_POST['Description'], $_POST['Distance'], $_POST['Difficulty'], $_POST['Type'], $_POST['MapImageUrl']);
+                updateRoute($_POST['RouteID'], getUserID(), $_POST['Name'], $_POST['Description'], $_POST['Distance'], $_POST['Difficulty'], $_POST['Type'], $_POST['MapImageURL']);
             }
             break;
         case 'delete':
@@ -127,7 +127,8 @@ foreach ($routes as $route) {
     }
     echo '<div class="col-xs-10">';
 
-    echo '<h4>' . htmlentities($route['Name']) .  ' (' . htmlentities($route['Difficulty']) . ')</h4>';
+    echo '<h4><a href="route.php?RouteID=' . $route['RouteID'] . '" title="View Route Details">'
+        . htmlentities($route['Name']) .  ' (' . htmlentities($route['Difficulty']) . ')</a></h4>';
     echo '<p>' . htmlentities($route['Type']) . ' ' . round($route['Distance'], 1) . ' miles</p>';
     if (strlen($route['Description']) < 100) {
         echo '<p>' . htmlentities($route['Description']) . '</p>';

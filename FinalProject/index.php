@@ -37,17 +37,34 @@
                 foreach ($upcomingRoutes as $index => $route) {
                     if ($index == 0) {
                         // make this ride stand out as more important
-                        echo '<h4>' . date('F d, Y', $sunday) . ' at 4pm: ' . $route['Name'] .  '</h4>';
-                        if ($route['MapImageURL']) {
-                            echo '<img src="' . $route['MapImageURL'] .'"/>';
+                        echo '<h4><a href="route.php?RouteID=' . $route['RouteID'] . '">' . htmlentities($route['Name']) .  '</a></h4>';
+                        echo '<div class="media">';
+                        echo '<div class="media-left">';
+                        if (!empty($route['MapImageURL'])) {
+                            echo '<a href="route.php?RouteID=' . $route['RouteID'] . '">';
+                            echo '<img class="media-object" src="' . $route['MapImageURL'] .'" height="150" />';
+                            echo '</a>';
                         }
-                        echo '<p>' . $route['Type'] . ' ' . round($route['Distance'], 1) . ' miles</p>';
-                        echo '<p>' . $route['Description'] . '</p>';
+                        echo '</div>';
+                        echo '<div class="media-body">';
+                        echo '<p>' . date('F d, Y', $sunday) . ' at 4pm</p>';
+                        echo '<p>' . htmlentities($route['Type']) . ' ' . round($route['Distance'], 1) . ' miles</p>';
+                        if (strlen($route['Description']) < 120) {
+                            echo '<p>' . htmlentities($route['Description']) . '</p>';
+                        } else {
+                            echo '<p>' . htmlentities(substr($route['Description'],0,130)) . '...</p>';
+                        }
+                        echo '</div>';
+                        echo '</div>';
                     } else {
                         // Rides further out can be displayed without as much attention
-                        echo '<h5>' . date('F d, Y', $sunday) . ' at 4pm: ' . $route['Name'] .  '</h5>';
-                        echo '<p>' . $route['Type'] . ' ' . round($route['Distance'], 1) . ' miles</p>';
-                        echo '<p>' . $route['Description'] . '</p>';
+                        echo '<h5><a href="route.php?RouteID=' . $route['RouteID'] . '">' . htmlentities($route['Name'])  .  '</a> on ' . date('F d, Y', $sunday) . '</h5>';
+                        echo '<p>' . htmlentities($route['Type']) . ' ' . round($route['Distance'], 1) . ' miles</p>';
+                        if (strlen($route['Description']) < 120) {
+                            echo '<p>' . htmlentities($route['Description']) . '</p>';
+                        } else {
+                            echo '<p>' . htmlentities(substr($route['Description'],0,130)) . '...</p>';
+                        }
                     }
                     $sunday += (7 * 86400); // add a week before going through the loop again
                 }
