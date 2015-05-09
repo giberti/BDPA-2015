@@ -58,6 +58,7 @@
                         echo '</div>';
                     } else {
                         // Rides further out can be displayed without as much attention
+                        echo '<div class="route-homepage-secondary">';
                         echo '<h5><a href="route.php?RouteID=' . $route['RouteID'] . '">' . htmlentities($route['Name'])  .  '</a> on ' . date('F d, Y', $sunday) . '</h5>';
                         echo '<p>' . htmlentities($route['Type']) . ' ' . round($route['Distance'], 1) . ' miles</p>';
                         if (strlen($route['Description']) < 120) {
@@ -65,6 +66,7 @@
                         } else {
                             echo '<p>' . htmlentities(substr($route['Description'],0,130)) . '...</p>';
                         }
+                        echo '</div>';
                     }
                     $sunday += (7 * 86400); // add a week before going through the loop again
                 }

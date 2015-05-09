@@ -62,6 +62,8 @@ if (!$route) {
                 <td><?php echo htmlentities($route['Type']) ?></td>
             </tr>
         </table>
+
+        <a href="<?php echo $route['MapImageURL'];?>" title="Click to download"><img src="<?php echo $route['MapImageURL'];?>" width="100%" /></a>
     </div>
 <?php
 }

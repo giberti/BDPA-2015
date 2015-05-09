@@ -16,3 +16,5 @@ body {
 }
 
 .backgroundUrl .container { height: 150px; }
+
+.route-homepage-secondary { border-top: 1px solid #eee; margin-top:3px; padding-top: 3px;}
