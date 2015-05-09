@@ -39,13 +39,20 @@
 
     // If this user is logged in, show the add/edit tip form
     if (loggedInUser()) {
+        $displayStyle = 'none';
+
         $tipfields = array(
             'TipID' => '',
             'UserID' => '',
             'Type' => 'Type',
             'Text' => 'Tip Text'
         );
-        echo '<div class="container">';
+
+        if ($editTip) {
+            $displayStyle = 'block';
+        }
+
+        echo '<div class="container" id="addEditForm" style="display:' . $displayStyle. ';">';
         echo '<form action="' . getFilename() . '?action=save" method="post">';
         if ($editTip) {
             echo '<h2>Editing this tip</h2>';
@@ -89,6 +96,11 @@
     echo '<div class="row">';
     echo '<div class="col-xs-12">';
     echo '<h1>Bicycling Tips</h1>';
+    if (loggedInUser() && !$editTip) {
+        echo '<p>';
+        echo '<a id="addNewLink" onclick="showAddEditForm();">Add new tip</a>';
+        echo '</p>';
+    }
     foreach ($tips as $index => $tip) {
         if ($pageSize == $index + 1) {
             break;
