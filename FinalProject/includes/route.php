@@ -70,8 +70,8 @@ function addRoute($userid, $name, $description, $distance, $difficulty, $type, $
     $insert = "INSERT INTO routes ({$columns}) VALUES ($values)";
     $result = mysql_query($insert, $mysql);
     if ($result) {
-        $tipid = mysql_insert_id($mysql);
-        return getRouteById($tipid);
+        $routeid = mysql_insert_id($mysql);
+        return getRouteById($routeid);
     }
     return false;
 }
@@ -100,7 +100,7 @@ function updateRoute($routeid, $userid, $name, $description, $distance, $difficu
         }
         $updates .= $column . " = '" . $value . "'";
     }
-    $update = "UPDATE routes SET {$updates} WHERE TipID = " . $routeid;
+    $update = "UPDATE routes SET {$updates} WHERE RouteID = " . $routeid;
     $result = mysql_query($update, $mysql);
     if ($result) {
         return getRouteById($routeid);

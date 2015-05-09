@@ -9,7 +9,7 @@ function getTipById($tipid) {
     $select = "SELECT * FROM tips WHERE TipID = " . $tipid;
     $result = mysql_query($select, $mysql);
     if ($result) {
-        return mysql_fetcha_assoc($result);
+        return mysql_fetch_assoc($result);
     }
     return false;
 }
