@@ -5,7 +5,7 @@
     require 'includes/functions.php';
     require 'includes/tip.php';
 
-    $pageSize = 10;
+    $pageSize = 15;
     $offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
 
     include 'includes/html-body-start.php';
